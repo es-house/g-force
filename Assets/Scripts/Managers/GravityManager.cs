@@ -27,9 +27,9 @@ public class GravityManager : MonoBehaviour
 
     public void InvertGravity() {
         if (isGravityReversed) {
-            Physics.gravity = new Vector3(0f, -9.81f, 0f);
+            Physics.gravity = new Vector3(0f, -Utility.GRAVITY, 0f);
         } else {
-            Physics.gravity = new Vector3(0f, 9.81f, 0f);
+            Physics.gravity = new Vector3(0f, Utility.GRAVITY, 0f);
         }
         isGravityReversed = !isGravityReversed;
     }

@@ -5,10 +5,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float playerSpeed = 10;
+    [SerializeField]
+    private float rotationSpeed = 200f;
+
     private Rigidbody playerRigidbody;
     private Vector3 playerInput;
     private Quaternion targetRotation;
-    private float rotationSpeed = 200f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
@@ -42,11 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void FlipGravity() {
         GravityManager.Instance.InvertGravity();
-        if (GravityManager.Instance.isGravityReversed) {
-            targetRotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z + 180f);
-        } else {
-            targetRotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z + 180f);
-        }
+        targetRotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z + Utility.PLAYER_ROTATION);
     }
 
     private void MovePlayer() {
