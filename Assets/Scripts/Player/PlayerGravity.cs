@@ -6,6 +6,8 @@ public class PlayerGravity : MonoBehaviour
     private float rotationSpeed = 200f;
 
     private bool isGravityInverted = false;
+    private bool isGrounded = false;
+    private float groundDistance = 1.1f;
     private Rigidbody playerRigidbody;
     private Quaternion targetRotation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,8 +19,12 @@ public class PlayerGravity : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.G)) {
-            FlipGravity();
+        CheckGround();
+
+        if (isGrounded) {
+            if (Input.GetKeyDown(KeyCode.G)) {
+                FlipGravity();
+            }
         }
     }
 
@@ -43,5 +49,20 @@ public class PlayerGravity : MonoBehaviour
 
     private void FlipPlayer() {
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    private void CheckGround() {
+        Vector3 directionGroundCheck = Vector3.down;
+        if (isGravityInverted) {
+            directionGroundCheck = Vector3.up;
+        }
+
+        if (Physics.Raycast(transform.position, directionGroundCheck, out RaycastHit hit, groundDistance)) {
+            if (hit.collider.CompareTag("Ground")) {
+                isGrounded = true;
+            }
+        } else {
+            isGrounded = false;
+        }
     }
 }
