@@ -2,19 +2,24 @@ using UnityEngine;
 
 public class PlayerGravity : MonoBehaviour
 {
+    public bool isGrounded { get; private set; }
     [SerializeField]
     private float rotationSpeed = 200f;
+    [SerializeField]
+    private AudioClip jumpAudioClip;
 
     private bool isGravityInverted = false;
-    public bool isGrounded { get; private set; }
+    private bool hasJumped = false;
     private float groundDistance = 1.1f;
     private Rigidbody playerRigidbody;
     private Quaternion targetRotation;
+    private AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         playerRigidbody = GetComponent<Rigidbody>();
 
         playerRigidbody.useGravity = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,6 +28,7 @@ public class PlayerGravity : MonoBehaviour
 
         if (isGrounded) {
             if (Input.GetKeyDown(KeyCode.G)) {
+                hasJumped = true;
                 FlipGravity();
             }
         }
@@ -60,9 +66,19 @@ public class PlayerGravity : MonoBehaviour
         if (Physics.Raycast(transform.position, directionGroundCheck, out RaycastHit hit, groundDistance)) {
             if (hit.collider.CompareTag("Ground")) {
                 isGrounded = true;
+                if (hasJumped) {
+                    PlayJumpAudio();
+                    hasJumped = false;
+                }
             }
         } else {
             isGrounded = false;
+        }
+    }
+
+    private void PlayJumpAudio() {
+        if (audioSource != null) {
+            audioSource.PlayOneShot(jumpAudioClip);
         }
     }
 }

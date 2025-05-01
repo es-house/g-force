@@ -8652,6 +8652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 200
+  jumpAudioClip: {fileID: 8300000, guid: b796f7e3b1a4d7344b7ee8d6c077a68f, type: 3}
 --- !u!82 &1471716951
 AudioSource:
   m_ObjectHideFlags: 0
