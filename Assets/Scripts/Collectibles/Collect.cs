@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -12,6 +13,8 @@ public class Collect : MonoBehaviour
                 PlayerPrefs.SetInt(Utility.Collectibles.KEY.ToString(), 1);
             } else if (gameObject.CompareTag(Utility.GOAL_TAG)) {
                 PlayerPrefs.SetInt(Utility.Collectibles.GOAL.ToString(), 1);
+                print("got goal");
+                GameManager.Instance.ShowVictoryScreen();
             }
             if (audioClip != null) {
                 Play2DAudio(audioClip);
