@@ -6,7 +6,7 @@ public class PlayerGravity : MonoBehaviour
     private float rotationSpeed = 200f;
 
     private bool isGravityInverted = false;
-    private bool isGrounded = false;
+    public bool isGrounded { get; private set; }
     private float groundDistance = 1.1f;
     private Rigidbody playerRigidbody;
     private Quaternion targetRotation;
