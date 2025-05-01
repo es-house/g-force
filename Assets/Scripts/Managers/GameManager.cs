@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour {
     }
 
     private void ResetPlayerCollectibles() {
-        print("resetting collectibles");
         foreach (var collectible in Enum.GetValues(typeof(Utility.Collectibles))) {
             // safe just because I iterate on collectibles enum and there's no persistence between executions
             PlayerPrefs.DeleteKey(collectible.ToString());
@@ -27,7 +26,6 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ReloadScene() {
-        print("Reload scene");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -36,7 +34,6 @@ public class GameManager : MonoBehaviour {
     }
 
     IEnumerator Victory() {
-        print("call show page");
         yield return new WaitForSeconds(.3f);
         victoryImage.SetActive(true);
         Time.timeScale = 0;
