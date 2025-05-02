@@ -32,6 +32,7 @@ public class PlayerGravity : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.G)) {
                 hasJumped = true;
                 FlipGravity();
+                CameraManager.Instance.MoveCameraAfterGravityFlip();
             }
         }
     }
