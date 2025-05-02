@@ -7,6 +7,8 @@ public class PlayerGravity : MonoBehaviour
     private float rotationSpeed = 200f;
     [SerializeField]
     private AudioClip jumpAudioClip;
+    [SerializeField]
+    private ParticleSystem flipParticleSystem;
 
     private bool isGravityInverted = false;
     private bool hasJumped = false;
@@ -48,6 +50,7 @@ public class PlayerGravity : MonoBehaviour
     }
 
     private void FlipGravity() {
+        flipParticleSystem.Play();
         isGravityInverted = !isGravityInverted;
 
         targetRotation = Quaternion.Euler(0f, 0f, transform.eulerAngles.z + Utility.PLAYER_ROTATION);
