@@ -29,3 +29,21 @@ The project is not a full game but a mechanic focused prototype that I create to
 * C#
 * Cinemachine
 * Unity Particle System
+
+### 📢 Credits
+
+* **Footsteps and Jump Audio**
+
+    *[Footsteps - Essentials](https://assetstore.unity.com/packages/audio/sound-fx/foley/footsteps-essentials-189879)* by **Nox_Sound** - Unity Assets Store
+
+    License agreement: [Standard Unity Asset Store EULA](https://unity.com/legal/as-terms)
+
+    Used for player walking, running and landing audio
+
+* **SFX Audio**
+
+    *[Casual Game Fx One Shot](https://assetstore.unity.com/packages/audio/sound-fx/casual-game-fx-one-shot-264212)* by **Vincent T** - Unity Assets Store
+
+    License agreement: [Standard Unity Asset Store EULA](https://unity.com/legal/as-terms)
+
+    Used for feedbacks when player collides with a collectible and when player falls
