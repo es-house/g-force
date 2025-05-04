@@ -1,6 +1,6 @@
-# g-force
+# G-Force
 
-G-Force is a 3D gravity flipping platformer prototypye.
+G-Force is a 3D gravity flipping platformer prototype.
 The project explores different movement mechanics through physics-based player control and the ability of the player to invert the gravity.
 It was designed as a prototype for my game design portfolio.
 
